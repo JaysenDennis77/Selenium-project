@@ -4,8 +4,12 @@ This class will be storing only the utility methods that can be used across the 
  */
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
+import java.time.Duration;
 import java.util.Set;
 
 public class BrowserUtlis {
@@ -48,6 +52,22 @@ public static void verifyTitle(WebDriver driver, String expectedTitle){
 }
     public static void verifyTitleContains(WebDriver driver, String expectedTitle){
         Assert.assertTrue(driver.getTitle().contains(expectedTitle));
+
+    }
+
+    public static void waitForInvisibilityOf(WebElement target){
+        //4- Wait until “loading bar disappears”
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.invisibilityOf(target));
+
+
+    }
+
+    public static void waitForTitleOf(WebElement title){
+        //4- Wait until “loading bar disappears”
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.invisibilityOf(title));
+
 
     }
 
